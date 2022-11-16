@@ -1,0 +1,50 @@
+﻿@model CrudAplicativoUniversidad.Models.Mqsolicitudcab06
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Mqsolicitudcab06</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdAlumno01" class="control-label"></label>
+                <select asp-for="IdAlumno01" class ="form-control" asp-items="ViewBag.IdAlumno01"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaSolicitud06" class="control-label"></label>
+                <input asp-for="FechaSolicitud06" class="form-control" />
+                <span asp-validation-for="FechaSolicitud06" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdRegistrante04" class="control-label"></label>
+                <select asp-for="IdRegistrante04" class ="form-control" asp-items="ViewBag.IdRegistrante04"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Carrera05" class="control-label"></label>
+                <select asp-for="Carrera05" class ="form-control" asp-items="ViewBag.Carrera05"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Periodo06" class="control-label"></label>
+                <input asp-for="Periodo06" class="form-control" />
+                <span asp-validation-for="Periodo06" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

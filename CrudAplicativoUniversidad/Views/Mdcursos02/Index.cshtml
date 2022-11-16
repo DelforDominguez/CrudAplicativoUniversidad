@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CrudAplicativoUniversidad.Models.Mdcursos02>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre02)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion02)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NroCreditos02)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Activo02)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre02)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion02)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NroCreditos02)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Activo02)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id02">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id02">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id02">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
