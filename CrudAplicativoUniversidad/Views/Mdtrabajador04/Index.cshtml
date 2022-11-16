@@ -1,25 +1,25 @@
 ﻿@model IEnumerable<CrudAplicativoUniversidad.Models.Mdtrabajador04>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Trabajador";
 }
 
-<h1>Index</h1>
+<h1>Trabajador</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Registrar Nuevo Trabajador</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nombres04)
+                Nombres@*@Html.DisplayNameFor(model => model.Nombres04)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Apellidos04)
+               Apellidos @*@Html.DisplayNameFor(model => model.Apellidos04)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdTipo03Navigation)
+               Tipo @*@Html.DisplayNameFor(model => model.IdTipo03Navigation)*@
             </th>
             <th></th>
         </tr>

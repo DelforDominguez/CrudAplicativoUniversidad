@@ -49,8 +49,8 @@ namespace CrudAplicativoUniversidad.Controllers
         // GET: Mqsolicituddet07/Create
         public IActionResult Create()
         {
-            ViewData["IdCurso02"] = new SelectList(_context.Mdcursos02s, "Id02", "Id02");
-            ViewData["IdProfesor04"] = new SelectList(_context.Mdtrabajador04s, "Id04", "Id04");
+            ViewData["IdCurso02"] = new SelectList(_context.Mdcursos02s.Where(n => n.Activo02 == 1), "Id02", "Nombre02");
+            ViewData["IdProfesor04"] = new SelectList(_context.Mdtrabajador04s.Where(n => n.IdTipo03 ==1), "Id04", "Nombres04");
             ViewData["IdSolicitud06"] = new SelectList(_context.Mqsolicitudcab06s, "Id06", "Id06");
             return View();
         }
@@ -62,12 +62,12 @@ namespace CrudAplicativoUniversidad.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id07,IdSolicitud06,IdCurso02,IdProfesor04,Aula07,Sede07,Observacion07")] Mqsolicituddet07 mqsolicituddet07)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 _context.Add(mqsolicituddet07);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
+            //}
             ViewData["IdCurso02"] = new SelectList(_context.Mdcursos02s, "Id02", "Id02", mqsolicituddet07.IdCurso02);
             ViewData["IdProfesor04"] = new SelectList(_context.Mdtrabajador04s, "Id04", "Id04", mqsolicituddet07.IdProfesor04);
             ViewData["IdSolicitud06"] = new SelectList(_context.Mqsolicitudcab06s, "Id06", "Id06", mqsolicituddet07.IdSolicitud06);
@@ -105,8 +105,8 @@ namespace CrudAplicativoUniversidad.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
                     _context.Update(mqsolicituddet07);
@@ -124,7 +124,7 @@ namespace CrudAplicativoUniversidad.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
+            //}
             ViewData["IdCurso02"] = new SelectList(_context.Mdcursos02s, "Id02", "Id02", mqsolicituddet07.IdCurso02);
             ViewData["IdProfesor04"] = new SelectList(_context.Mdtrabajador04s, "Id04", "Id04", mqsolicituddet07.IdProfesor04);
             ViewData["IdSolicitud06"] = new SelectList(_context.Mqsolicitudcab06s, "Id06", "Id06", mqsolicituddet07.IdSolicitud06);

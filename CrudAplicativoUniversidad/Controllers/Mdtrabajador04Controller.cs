@@ -59,12 +59,12 @@ namespace CrudAplicativoUniversidad.Controllers
         public async Task<IActionResult> Create([Bind("Id04,Nombres04,Apellidos04,IdTipo03")] Mdtrabajador04 mdtrabajador04)
         {
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 _context.Add(mdtrabajador04);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
+            //}
             ViewData["IdTipo03"] = new SelectList(_context.Mdtipocolaborador03s, "Id03", "Id03", mdtrabajador04.IdTipo03);
             return View(mdtrabajador04);
         }
@@ -98,8 +98,8 @@ namespace CrudAplicativoUniversidad.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
                     _context.Update(mdtrabajador04);
@@ -117,7 +117,7 @@ namespace CrudAplicativoUniversidad.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
+            //}
             ViewData["IdTipo03"] = new SelectList(_context.Mdtipocolaborador03s, "Id03", "Id03", mdtrabajador04.IdTipo03);
             return View(mdtrabajador04);
         }

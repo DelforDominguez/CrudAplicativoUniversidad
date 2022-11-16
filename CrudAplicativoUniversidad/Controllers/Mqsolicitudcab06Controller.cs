@@ -49,9 +49,9 @@ namespace CrudAplicativoUniversidad.Controllers
         // GET: Mqsolicitudcab06/Create
         public IActionResult Create()
         {
-            ViewData["Carrera05"] = new SelectList(_context.Mdcarreras05s, "Id05", "Id05");
-            ViewData["IdAlumno01"] = new SelectList(_context.Mdalumno01s, "Id01", "Id01");
-            ViewData["IdRegistrante04"] = new SelectList(_context.Mdtrabajador04s, "Id04", "Id04");
+            ViewData["Carrera05"] = new SelectList(_context.Mdcarreras05s, "Id05", "Descripcion05");
+            ViewData["IdAlumno01"] = new SelectList(_context.Mdalumno01s, "Id01", "Nombres01");
+            ViewData["IdRegistrante04"] = new SelectList(_context.Mdtrabajador04s.Where(n => n.IdTipo03 == 2), "Id04", "Nombres04");
             return View();
         }
 
@@ -62,12 +62,12 @@ namespace CrudAplicativoUniversidad.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id06,IdAlumno01,FechaSolicitud06,IdRegistrante04,Carrera05,Periodo06")] Mqsolicitudcab06 mqsolicitudcab06)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 _context.Add(mqsolicitudcab06);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
+            //}
             ViewData["Carrera05"] = new SelectList(_context.Mdcarreras05s, "Id05", "Id05", mqsolicitudcab06.Carrera05);
             ViewData["IdAlumno01"] = new SelectList(_context.Mdalumno01s, "Id01", "Id01", mqsolicitudcab06.IdAlumno01);
             ViewData["IdRegistrante04"] = new SelectList(_context.Mdtrabajador04s, "Id04", "Id04", mqsolicitudcab06.IdRegistrante04);
@@ -105,8 +105,8 @@ namespace CrudAplicativoUniversidad.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
                     _context.Update(mqsolicitudcab06);
@@ -124,7 +124,7 @@ namespace CrudAplicativoUniversidad.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
+            //}
             ViewData["Carrera05"] = new SelectList(_context.Mdcarreras05s, "Id05", "Id05", mqsolicitudcab06.Carrera05);
             ViewData["IdAlumno01"] = new SelectList(_context.Mdalumno01s, "Id01", "Id01", mqsolicitudcab06.IdAlumno01);
             ViewData["IdRegistrante04"] = new SelectList(_context.Mdtrabajador04s, "Id04", "Id04", mqsolicitudcab06.IdRegistrante04);
